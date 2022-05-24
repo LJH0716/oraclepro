@@ -10,11 +10,11 @@ public class PersonVo {
 	
 	//생성자
 	public PersonVo() {
-		super();
+
 	}
 	
 	public PersonVo(int personId, String name, String hp, String company) {
-		super();
+
 		this.personId = personId;
 		this.name = name;
 		this.hp = hp;
