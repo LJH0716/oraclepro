@@ -65,8 +65,61 @@ public class PhoneDao {
 		}
 
 	}
+	
+	// 1. phone 리스트 메서드
+		public List<PersonVo> phoneSelect() {
 
-	// phone 등록 메서드
+			// 리스트 만들기
+			List<PersonVo> phoneList = new ArrayList<PersonVo>();
+
+			getConnection();
+
+			try {
+
+				// 3. SQL문 준비 / 바인딩 / 실행
+
+				// SQL문 준비
+				String query = "";
+				query += " select person_id ";
+				query += "        , name ";
+				query += "        , hp ";
+				query += "        , company ";
+				query += " from person ";
+				
+
+				// 바인딩
+				pstmt = conn.prepareStatement(query);
+
+				// 실행
+				rs = pstmt.executeQuery();
+
+				// 4.결과처리
+				// 반복문으로 Vo 만들기 List에 추가하기
+				while (rs.next()) {
+
+					int personId = rs.getInt("person_id");
+					String name = rs.getString("name");
+					String hp = rs.getString("hp");
+					String company = rs.getString("company");
+					
+					PersonVo personVo = new PersonVo(personId, name, hp, company);
+
+					phoneList.add(personVo);
+
+				}
+
+			} catch (SQLException e) {
+				System.out.println("error:" + e);
+			}
+
+			close();
+
+			return phoneList;
+
+		}
+
+
+	//2. phone 등록 메서드
 	public int phoneInsert(PersonVo personVo) {
 
 		int count = -1;
@@ -104,7 +157,7 @@ public class PhoneDao {
 
 	}
 
-	// phone 수정 메서드
+	//3. phone 수정 메서드
 	public int phoneUpdate(PersonVo personVo) {
 
 		int count = -1;
@@ -145,7 +198,7 @@ public class PhoneDao {
 	}
 
 
-	// phone 삭제 메서드
+	//4. phone 삭제 메서드
 	public int phoneDelete(int personId) {
 
 		int count = -1;
@@ -180,58 +233,8 @@ public class PhoneDao {
 
 	}
 
+	// 5.phone 검색 메서드
 
-	// phone 리스트 전체 가져오기 메서드
-	public List<PersonVo> phoneSelect() {
-
-		// 리스트 만들기
-		List<PersonVo> phoneList = new ArrayList<PersonVo>();
-
-		getConnection();
-
-		try {
-
-			// 3. SQL문 준비 / 바인딩 / 실행
-
-			// SQL문 준비
-			String query = "";
-			query += " select person_id ";
-			query += "        , name ";
-			query += "        , hp ";
-			query += "        , company ";
-			query += " from person ";
-			
-
-			// 바인딩
-			pstmt = conn.prepareStatement(query);
-
-			// 실행
-			rs = pstmt.executeQuery();
-
-			// 4.결과처리
-			// 반복문으로 Vo 만들기 List에 추가하기
-			while (rs.next()) {
-
-				int personId = rs.getInt("person_id");
-				String name = rs.getString("name");
-				String hp = rs.getString("hp");
-				String company = rs.getString("company");
-				
-				PersonVo personVo = new PersonVo(personId, name, hp, company);
-
-				phoneList.add(personVo);
-
-			}
-
-		} catch (SQLException e) {
-			System.out.println("error:" + e);
-		}
-
-		close();
-
-		return phoneList;
-
-	}
-
+	
 
 }
