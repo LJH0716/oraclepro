@@ -55,9 +55,9 @@ public class PhoneApp {
 				
 				PersonVo in = new PersonVo(iname, ihp, icompany);
 
-				phoneDao.phoneInsert(in);
+				int incount = phoneDao.phoneInsert(in);
 				
-				System.out.println("[1건 등록되었습니다.]");
+				System.out.println("[" + incount+"건 등록되었습니다.]");
 				
 				break;
 				
@@ -84,9 +84,9 @@ public class PhoneApp {
 				
 				PersonVo up = new PersonVo(upersonId, uname, uhp, ucompany);
 				
-				phoneDao.phoneUpdate(up);
+				int upcount = phoneDao.phoneUpdate(up);
 				
-				System.out.println("[1건 수정되었습니다.]");
+				System.out.println("[" + upcount+"건 수정되었습니다.]");
 				
 				break;
 
@@ -97,9 +97,10 @@ public class PhoneApp {
 				int dpersonId = sc.nextInt();
 				
 				
-				phoneDao.phoneDelete(dpersonId);
+				int dcount = phoneDao.phoneDelete(dpersonId);
 
-				System.out.println("[1건 삭제되었습니다.]");
+				System.out.println("[" + dcount+"건 삭제되었습니다.]");
+				
 				
 				break;
 
