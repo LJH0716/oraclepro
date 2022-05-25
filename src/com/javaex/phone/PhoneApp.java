@@ -19,7 +19,8 @@ public class PhoneApp {
 		System.out.println("");
 
 		while (action) {
-			System.out.print("1.리스트  2.등록  3.삭제  4.검색  5.종료");
+			System.out.println("");
+			System.out.print("1.리스트  2.등록  3.수정  4.삭제  5.검색  6.종료");
 			System.out.println("");
 			System.out.println("-----------------------------------------");
 			System.out.print(">메뉴번호: ");
@@ -35,7 +36,7 @@ public class PhoneApp {
 				for(int i = 0; i<phoneList.size(); i++) {
 					
 					PersonVo personVo = phoneList.get(i);
-					System.out.println(personVo.getPersonId()+" , "+personVo.getName()+" , "+personVo.getHp()+" , "+personVo.getCompany());
+					System.out.println(personVo.getPersonId()+". "+personVo.getName()+"  "+personVo.getHp()+"  "+personVo.getCompany());
 					
 				}
 				break;
@@ -86,7 +87,7 @@ public class PhoneApp {
 				break;
 
 			case 4:
-				System.out.println("<3.삭제>");
+				System.out.println("<4.삭제>");
 				
 				System.out.print("> 번호: ");
 				int dpersonId = sc.nextInt();
@@ -98,14 +99,14 @@ public class PhoneApp {
 				break;
 
 			case 5:
-				System.out.println("<4.검색>");
+				System.out.println("<5.검색>");
 				System.out.print(">이름: ");
 			
 				
 				break;
 
 			case 6:
-				System.out.println("<5.종료>");
+				System.out.println("<6.종료>");
 				
 				action = false;
 				
