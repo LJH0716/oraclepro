@@ -44,18 +44,20 @@ public class PhoneApp {
 			case 2:
 				System.out.println("<2.등록>");
 				
-				System.out.print(">이름");
+				System.out.print("이름 > ");
 				String iname = sc.next();
 				
-				System.out.print(">휴대전화");
+				System.out.print("휴대전화 > ");
 				String ihp = sc.next();
 				
-				System.out.print(">회사전화");
+				System.out.print("회사번호 > ");
 				String icompany = sc.next();
 				
 				PersonVo in = new PersonVo(iname, ihp, icompany);
 
 				phoneDao.phoneInsert(in);
+				
+				System.out.println("[1건 등록되었습니다.]");
 				
 				break;
 				
@@ -84,23 +86,26 @@ public class PhoneApp {
 				
 				phoneDao.phoneUpdate(up);
 				
+				System.out.println("[1건 수정되었습니다.]");
+				
 				break;
 
 			case 4:
 				System.out.println("<4.삭제>");
 				
-				System.out.print("> 번호: ");
+				System.out.print("> 번호 : ");
 				int dpersonId = sc.nextInt();
 				
 				
 				phoneDao.phoneDelete(dpersonId);
 
-
+				System.out.println("[1건 삭제되었습니다.]");
+				
 				break;
 
 			case 5:
 				System.out.println("<5.검색>");
-				System.out.print(">이름: ");
+				System.out.print("검색어 > ");
 			
 				
 				break;
