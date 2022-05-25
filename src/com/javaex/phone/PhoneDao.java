@@ -170,15 +170,17 @@ public class PhoneDao {
 			// SQL문 준비
 			String query = "";
 			query += " update person";
-			query += " set hp = ?";
+			query += " set name = ? ";
+		    query += "     ,hp = ?";
 			query += "     ,company = ? ";
 			query += " where person_id = ? ";
 
 			// 바인딩
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, personVo.getHp());
-			pstmt.setString(2, personVo.getCompany());
-			pstmt.setInt(3, personVo.getPersonId());
+			pstmt.setString(1, personVo.getName());
+			pstmt.setString(2, personVo.getHp());
+			pstmt.setString(3, personVo.getCompany());
+			pstmt.setInt(4, personVo.getPersonId());
 			
 
 			// 실행
