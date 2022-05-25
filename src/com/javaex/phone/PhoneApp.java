@@ -26,6 +26,8 @@ public class PhoneApp {
 			System.out.print(">메뉴번호: ");
 			
 			int num = sc.nextInt();
+			sc.nextLine();  // 숫자 다음에 문자오면 나타내는 에러 해결(개행문자로 처리해주기)** 검색 에러
+
 
 			switch (num) {
 			
@@ -107,7 +109,18 @@ public class PhoneApp {
 			case 5:
 				System.out.println("<5.검색>");
 				System.out.print("검색어 > ");
-			
+				
+				String keyword = sc.nextLine();
+				
+				List<PersonVo> searchPhoneList = phoneDao.getPhoneList(keyword);
+
+				for (PersonVo vo : searchPhoneList) {
+					System.out.print(vo.getPersonId() + ".   ");
+					System.out.print(vo.getName() + "\t");
+					System.out.print(vo.getHp() + "\t");
+					System.out.print(vo.getCompany() + "\t");
+					System.out.println("");
+				}
 				
 				break;
 
