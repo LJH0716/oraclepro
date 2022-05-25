@@ -112,7 +112,7 @@ public class PhoneApp {
 				break;
 
 			case 6:
-				System.out.println("<6.종료>");
+				System.out.println("");
 				
 				action = false;
 				
